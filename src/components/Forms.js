@@ -1,13 +1,27 @@
 import { useState, useRef } from 'react'
 
+// Usually we want to put the user input into our component's state
+// This is an example of a _controlled_ component
 export const InputField = () => {
   const [text, setText] = useState('')
   const handleChange = (event) => {
     setText(event.target.value)
   }
-  return <input type="text" value={text} onChange={handleChange} />
+  return (
+    <>
+      <input type="text" value={text} onChange={handleChange} />
+      <div>
+        <h2>What's in the input field becomes state!</h2>
+        <p>And my component can use it however it wants. Like in its render:</p>
+        <p>{text}</p>
+      </div>
+    </>
+  )
 }
 
+// This component uses the useRef hook instead of storing form data in state
+// This is an example of an _uncontrolled_ component
+// We do this less commonly, only when we don't need the form data in our component
 export const RefInput = () => {
   const input = useRef()
   const showValue = () => {
@@ -22,6 +36,9 @@ export const RefInput = () => {
   )
 }
 
+// Radio buttons (and checkboxes) are different because they rely on a `checked` attribute
+// That is a boolean on the element
+// We want that in state so the component knows whether an attribute should render as checked in the DOM
 export const RadioInput = () => {
   const [letter, setLetter] = useState()
 

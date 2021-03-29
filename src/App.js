@@ -16,10 +16,10 @@ export default function App() {
   return (
     <>
       <Login setAuth={setAuth} isLoggedIn={isLoggedIn} />
-      <h1>smol forms</h1>
+      {/* <h1>smol forms</h1>
       <InputField />
       <RefInput />
-      <RadioInput />
+      <RadioInput /> */}
     </>
   )
 }
