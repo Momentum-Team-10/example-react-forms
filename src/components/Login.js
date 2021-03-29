@@ -11,7 +11,6 @@ function Login({ isLoggedIn, setAuth }) {
     event.preventDefault()
     requestLogin(username, password)
       .then((data) => {
-        console.log(data.data)
         if (data && data.auth_token) {
           setAuth(username, data.auth_token)
         }
@@ -36,7 +35,7 @@ function Login({ isLoggedIn, setAuth }) {
             id="username"
             required
             value={username}
-            onChange={(evt) => setUsername(evt.target.value)}
+            onChange={(event) => setUsername(event.target.value)}
           />
         </div>
 
@@ -49,7 +48,7 @@ function Login({ isLoggedIn, setAuth }) {
             id="password"
             required
             value={password}
-            onChange={(evt) => setPassword(evt.target.value)}
+            onChange={(event) => setPassword(event.target.value)}
           />
         </div>
 
