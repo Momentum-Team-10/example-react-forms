@@ -1,60 +1,51 @@
 import { useState } from 'react'
-import { requestLogin } from '../ajax'
 import 'tachyons'
+import { requestLogin } from '../ajax'
 
-function Login({ isLoggedIn, setAuth }) {
+const Login = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [errors, setErrors] = useState()
 
-  function handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault()
+    // axios.post(someUrl).then(data=> setSomeState(data))
+    // here is my FAKE REQUEST PLACEHOLDER
     requestLogin(username, password)
-      .then((data) => {
-        if (data && data.auth_token) {
-          setAuth(username, data.auth_token)
-        }
-      })
-      .catch((error) => {
-        setErrors(error.message)
-      })
+      .then((data) => console.log(data))
+      .catch((errors) => console.log(errors))
+    //make a request to the backend
+    console.log('handle submit!')
   }
 
   return (
-    <div className="Login">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        {errors && <div class="bg-red white pa3">{errors}</div>}
+    <form onSubmit={handleSubmit}>
+      <div className="mv2">
+        <label className="db mb2" htmlFor="username">
+          Username
+        </label>
+        <input
+          type="text"
+          id="username"
+          value={username}
+          onChange={(event) => setUsername(event.target.value)}
+        />
+      </div>
 
-        <div className="mv2">
-          <label className="db mb2" htmlFor="username">
-            Username
-          </label>
-          <input
-            type="text"
-            id="username"
-            required
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-          />
-        </div>
-
-        <div className="mv2">
-          <label className="db mb2" htmlFor="password">
-            Password
-          </label>
-          <input
-            type="password"
-            id="password"
-            required
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </div>
-
-        <button type="submit">Log in</button>
-      </form>
-    </div>
+      <div className="mv2">
+        <label className="db mb2" htmlFor="password">
+          Password
+        </label>
+        <input
+          type="password"
+          id="password"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+        />
+      </div>
+      <div className="mv2">
+        <button type="submit">Log In</button>
+      </div>
+    </form>
   )
 }
 

@@ -36,9 +36,9 @@ export const RefInput = () => {
   )
 }
 
-Radio buttons (and checkboxes) are different because they rely on a `checked` attribute
-That is a boolean on the element
-We want that in state so the component knows whether an attribute should render as checked in the DOM
+// Radio buttons (and checkboxes) are different because they rely on a `checked` attribute
+// That is a boolean on the element
+// We want that in state so the component knows whether an attribute should render as checked in the DOM
 export const RadioInput = () => {
   const [letter, setLetter] = useState()
 
